@@ -1,0 +1,59 @@
+.parent {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+    
+.numbers { grid-area: 1 / 1 / 5 / 4; }
+.operators { grid-area: 1 / 4 / 3 / 6; }
+.neg { grid-area: 3 / 4 / 4 / 6; }
+.equal { grid-area: 4 / 4 / 5 / 6; }
+
+.display-result {
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    padding: 6px 16px;
+    font-size: 0.875rem;
+    line-height: 1.75;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    outline: 2px solid #0062ff89;
+    background-color: #efefef;
+    outline-offset: -2px;
+    min-height: 36.5px;
+    margin-bottom: 10px;
+}
+.numbers-org {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+
+.row1 { grid-area: 1 / 1 / 2 / 4; }
+.row2 { grid-area: 2 / 1 / 3 / 4; }
+.row3 { grid-area: 3 / 1 / 4 / 4; }
+.row4 { grid-area: 4 / 1 / 5 / 4; }
+
+.operators-org {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+
+.numbers-row {
+    display: flex;
+    row-gap: 10px;
+    column-gap: 10px;
+}
+
+.numbers-row > button {
+    width: 100%;
+}
