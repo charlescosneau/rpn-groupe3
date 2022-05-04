@@ -1,22 +1,31 @@
-import { useState } from "react";
-import { Button } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import Grid from "@mui/material/Grid";
+import { Button, Typography } from "@mui/material";
 import "./calculator.css";
 
 export default function Calculator() {
-
-  const [operation, setOperation] = useState<number[]>([])
+  const [negativeValue, setNegativeValue] = useState(false)
+  const [operation, setOperation] = useState<(string|number)[]>([]);
 
   const addNumber = (number: number) => {
-    const tableOfNumber: number[] = []
-    tableOfNumber.push(number)
+    if(negativeValue) {
+      setOperation([...operation, -number]);
+      setNegativeValue(false)
+    } else {
+      setOperation([...operation, number]);
+    }
+  };
 
-    setOperation(tableOfNumber)
-  }
+  const addOperation = (symbole: string) => {
+    setOperation([...operation, symbole]);
+  };
 
   return (
     <div>
       <div className="display-result">
-        {operation}
+        {operation.map((item) => (
+          <>{item}</>
+        ))}
       </div>
       <div className="parent">
         <div className="numbers numbers-org">
@@ -40,13 +49,13 @@ export default function Calculator() {
           </div>
         </div>
         <div className="operators operators-org">
-            <Button fullWidth variant="contained">/</Button>
-            <Button fullWidth variant="contained">*</Button>
-            <Button fullWidth variant="contained">+</Button>
-            <Button fullWidth variant="contained">-</Button>
+            <Button onClick={() => addOperation('/') fullWidth variant="contained">/</Button>
+            <Button onClick={() => addOperation('*') fullWidth variant="contained">*</Button>
+            <Button onClick={() => addOperation('+') fullWidth variant="contained">+</Button>
+            <Button onClick={() => addOperation('-') fullWidth variant="contained">-</Button>
         </div>
         <div className="neg">
-            <Button variant="contained" color="info" fullWidth>Negatif</Button>
+            <Button onClick={() => setNegativeValue(!negativeValue)} variant="contained" color="info" fullWidth>Negatif</Button>
         </div>
         <div className="equal">
             <Button variant="contained" color="secondary" fullWidth>=</Button>
