@@ -7,7 +7,7 @@ import {
 } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import themeData from "./assets/theme";
-import Calculator from './components/Calculator/Calculator'
+import Calculator from '../src/components/calculator/calculator'
 import InputCalculator from './components/InputCalculator/InputCalculator'
 
 import { Button, Grid, Typography } from "@mui/material"
