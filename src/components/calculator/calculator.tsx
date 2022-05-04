@@ -49,10 +49,10 @@ export default function Calculator() {
           </div>
         </div>
         <div className="operators operators-org">
-            <Button onClick={() => addOperation('/') fullWidth variant="contained">/</Button>
-            <Button onClick={() => addOperation('*') fullWidth variant="contained">*</Button>
-            <Button onClick={() => addOperation('+') fullWidth variant="contained">+</Button>
-            <Button onClick={() => addOperation('-') fullWidth variant="contained">-</Button>
+            <Button onClick={() => addOperation('/')} fullWidth variant="contained">/</Button>
+            <Button onClick={() => addOperation('*')} fullWidth variant="contained">*</Button>
+            <Button onClick={() => addOperation('+')} fullWidth variant="contained">+</Button>
+            <Button onClick={() => addOperation('-')} fullWidth variant="contained">-</Button>
         </div>
         <div className="neg">
             <Button onClick={() => setNegativeValue(!negativeValue)} variant="contained" color="info" fullWidth>Negatif</Button>
