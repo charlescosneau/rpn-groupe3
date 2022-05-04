@@ -1,11 +1,46 @@
-import React from 'react'
+import React from "react";
 import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
+import { Button } from "@mui/material";
+import { makeStyles } from "@mui/styles";
 
 export default function Calculator() {
   return (
     <Grid>
-      <Typography>Bonjour je suis la calculette</Typography>
+      <Grid container>
+        <Grid>
+          <Grid>
+            <Button>7</Button>
+            <Button>8</Button>
+            <Button>9</Button>
+          </Grid>
+          <Grid>
+            <Button>4</Button>
+            <Button>5</Button>
+            <Button>6</Button>
+          </Grid>
+          <Grid>
+            <Button>1</Button>
+            <Button>2</Button>
+            <Button>3</Button>
+          </Grid>
+          <Grid>
+            <Button fullWidth>0</Button>
+          </Grid>
+        </Grid>
+        <Grid>
+          <Grid>
+            <Button>/</Button>
+            <Button>*</Button>
+          </Grid>
+          <Grid>
+            <Button>+</Button>
+            <Button>-</Button>
+          </Grid>
+          <Grid>
+            <Button fullWidth>=</Button>
+          </Grid>
+        </Grid>
+      </Grid>
     </Grid>
-  )
+  );
 }
