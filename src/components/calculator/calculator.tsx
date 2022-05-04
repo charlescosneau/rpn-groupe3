@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import Grid from "@mui/material/Grid";
-import { Button, Typography } from "@mui/material";
+import React, { useState } from "react";
+import { Button } from "@mui/material";
 import "./calculator.css";
 
 export default function Calculator() {
@@ -55,7 +54,7 @@ export default function Calculator() {
             <Button onClick={() => addOperation('-')} fullWidth variant="contained">-</Button>
         </div>
         <div className="neg">
-            <Button onClick={() => setNegativeValue(!negativeValue)} variant="contained" color="info" fullWidth>Negatif</Button>
+            <Button onClick={() => setNegativeValue(!negativeValue)} variant={negativeValue ? "contained" : "outlined"} color="info" fullWidth>Negatif</Button>
         </div>
         <div className="equal">
             <Button variant="contained" color="secondary" fullWidth>=</Button>
