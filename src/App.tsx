@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useMemo } from "react";
+import "./App.css";
+import {
+  ThemeProvider,
+  responsiveFontSizes,
+  createTheme,
+} from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import themeData from "./assets/theme";
+import Calculator from './components/calculator/calculator'
+import { Grid } from "@mui/material";
 
 function App() {
+  const theme = useMemo(() => {
+    const themeContent = createTheme(themeData);
+    return responsiveFontSizes(themeContent, { disableAlign: true });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Grid>
+        <Calculator/>
+      </Grid>
+    </ThemeProvider>
   );
 }
 
