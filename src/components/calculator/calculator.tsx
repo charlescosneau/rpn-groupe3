@@ -1,18 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Grid from "@mui/material/Grid";
 import { Button, Typography } from "@mui/material";
 
-
 export default function Calculator() {
-
-  const [operation, setOperation] = useState<number[]>([])
+  const [negativeValue, setNegativeValue] = useState(false)
+  const [operation, setOperation] = useState<(string|number)[]>([]);
 
   const addNumber = (number: number) => {
-    const tableOfNumber: number[] = []
-    tableOfNumber.push(number)
+    if(negativeValue) {
+      setOperation([...operation, -number]);
+      setNegativeValue(false)
+    } else {
+      setOperation([...operation, number]);
+    }
+  };
 
-    setOperation(tableOfNumber)
-  }
+  const addOperation = (symbole: string) => {
+    setOperation([...operation, symbole]);
+  };
 
   return (
     <Grid>
@@ -27,7 +32,9 @@ export default function Calculator() {
           marginBottom: 0.1,
         }}
       >
-        {operation}
+        {operation.map((item, index) => (
+          <>{item}</>
+        ))}
       </Grid>
       <Grid container>
         <Grid
@@ -52,7 +59,9 @@ export default function Calculator() {
             <Button onClick={() => addNumber(3)}>3</Button>
           </Grid>
           <Grid>
-            <Button fullWidth onClick={() => addNumber(0)}>0</Button>
+            <Button fullWidth onClick={() => addNumber(0)}>
+              0
+            </Button>
           </Grid>
         </Grid>
         <Grid
@@ -61,15 +70,15 @@ export default function Calculator() {
           }}
         >
           <Grid>
-            <Button>/</Button>
-            <Button>*</Button>
+            <Button onClick={() => addOperation('/')}>/</Button>
+            <Button onClick={() => addOperation('*')}>*</Button>
           </Grid>
           <Grid>
-            <Button>+</Button>
-            <Button>-</Button>
+            <Button onClick={() => addOperation('+')}>+</Button>
+            <Button onClick={() => addOperation('-')}>-</Button>
           </Grid>
           <Grid>
-            <Button fullWidth>Negatif</Button>
+            <Button onClick={() => setNegativeValue(!negativeValue)}  fullWidth>Negatif</Button>
           </Grid>
           <Grid>
             <Button fullWidth>=</Button>
