@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import Grid from "@mui/material/Grid";
-import { Button, Typography } from "@mui/material";
-
+import { useState } from "react";
+import { Button } from "@mui/material";
+import "./calculator.css";
 
 export default function Calculator() {
 
@@ -15,67 +14,44 @@ export default function Calculator() {
   }
 
   return (
-    <Grid>
-      <Grid
-        sx={{
-          border: 1,
-          paddingTop: 1,
-          paddingBottom: 1,
-          paddingLeft: 3,
-          paddingRight: 3,
-          marginTop: 3,
-          marginBottom: 0.1,
-        }}
-      >
+    <div>
+      <div className="display-result">
         {operation}
-      </Grid>
-      <Grid container>
-        <Grid
-          sx={{
-            border: 1,
-            marginRight: 0.1,
-          }}
-        >
-          <Grid>
-            <Button onClick={() => addNumber(7)}>7</Button>
-            <Button onClick={() => addNumber(8)}>8</Button>
-            <Button onClick={() => addNumber(9)}>9</Button>
-          </Grid>
-          <Grid>
-            <Button onClick={() => addNumber(4)}>4</Button>
-            <Button onClick={() => addNumber(5)}>5</Button>
-            <Button onClick={() => addNumber(6)}>6</Button>
-          </Grid>
-          <Grid>
-            <Button onClick={() => addNumber(1)}>1</Button>
-            <Button onClick={() => addNumber(2)}>2</Button>
-            <Button onClick={() => addNumber(3)}>3</Button>
-          </Grid>
-          <Grid>
-            <Button fullWidth onClick={() => addNumber(0)}>0</Button>
-          </Grid>
-        </Grid>
-        <Grid
-          sx={{
-            border: 1,
-          }}
-        >
-          <Grid>
-            <Button>/</Button>
-            <Button>*</Button>
-          </Grid>
-          <Grid>
-            <Button>+</Button>
-            <Button>-</Button>
-          </Grid>
-          <Grid>
-            <Button fullWidth>Negatif</Button>
-          </Grid>
-          <Grid>
-            <Button fullWidth>=</Button>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Grid>
+      </div>
+      <div className="parent">
+        <div className="numbers numbers-org">
+          <div className="row1 numbers-row">
+            <Button variant="outlined" onClick={() => addNumber(7)}>7</Button>
+            <Button variant="outlined" onClick={() => addNumber(8)}>8</Button>
+            <Button variant="outlined" onClick={() => addNumber(9)}>9</Button>
+          </div>
+          <div className="row2 numbers-row">
+            <Button variant="outlined" onClick={() => addNumber(4)}>4</Button>
+            <Button variant="outlined" onClick={() => addNumber(5)}>5</Button>
+            <Button variant="outlined" onClick={() => addNumber(6)}>6</Button>
+          </div>
+          <div className="row3 numbers-row">
+            <Button variant="outlined" onClick={() => addNumber(1)}>1</Button>
+            <Button variant="outlined" onClick={() => addNumber(2)}>2</Button>
+            <Button variant="outlined" onClick={() => addNumber(3)}>3</Button>
+          </div>
+          <div className="row4">
+            <Button variant="outlined" fullWidth onClick={() => addNumber(0)}>0</Button>
+          </div>
+        </div>
+        <div className="operators operators-org">
+            <Button fullWidth variant="contained">/</Button>
+            <Button fullWidth variant="contained">*</Button>
+            <Button fullWidth variant="contained">+</Button>
+            <Button fullWidth variant="contained">-</Button>
+        </div>
+        <div className="neg">
+            <Button variant="contained" color="info" fullWidth>Negatif</Button>
+        </div>
+        <div className="equal">
+            <Button variant="contained" color="secondary" fullWidth>=</Button>
+        </div>
+      </div>
+    </div>
   );
 }
