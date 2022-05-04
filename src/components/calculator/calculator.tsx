@@ -1,33 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
-import { Button } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import { Button, Typography } from "@mui/material";
+
 
 export default function Calculator() {
+
+  const [operation, setOperation] = useState<number[]>([])
+
+  const addNumber = (number: number) => {
+    const tableOfNumber: number[] = []
+    tableOfNumber.push(number)
+
+    setOperation(tableOfNumber)
+  }
+
   return (
     <Grid>
+      <Grid
+        sx={{
+          border: 1,
+          paddingTop: 1,
+          paddingBottom: 1,
+          paddingLeft: 3,
+          paddingRight: 3,
+          marginTop: 3,
+          marginBottom: 0.1,
+        }}
+      >
+        {operation}
+      </Grid>
       <Grid container>
-        <Grid>
+        <Grid
+          sx={{
+            border: 1,
+            marginRight: 0.1,
+          }}
+        >
           <Grid>
-            <Button>7</Button>
-            <Button>8</Button>
-            <Button>9</Button>
+            <Button onClick={() => addNumber(7)}>7</Button>
+            <Button onClick={() => addNumber(8)}>8</Button>
+            <Button onClick={() => addNumber(9)}>9</Button>
           </Grid>
           <Grid>
-            <Button>4</Button>
-            <Button>5</Button>
-            <Button>6</Button>
+            <Button onClick={() => addNumber(4)}>4</Button>
+            <Button onClick={() => addNumber(5)}>5</Button>
+            <Button onClick={() => addNumber(6)}>6</Button>
           </Grid>
           <Grid>
-            <Button>1</Button>
-            <Button>2</Button>
-            <Button>3</Button>
+            <Button onClick={() => addNumber(1)}>1</Button>
+            <Button onClick={() => addNumber(2)}>2</Button>
+            <Button onClick={() => addNumber(3)}>3</Button>
           </Grid>
           <Grid>
-            <Button fullWidth>0</Button>
+            <Button fullWidth onClick={() => addNumber(0)}>0</Button>
           </Grid>
         </Grid>
-        <Grid>
+        <Grid
+          sx={{
+            border: 1,
+          }}
+        >
           <Grid>
             <Button>/</Button>
             <Button>*</Button>
@@ -35,6 +67,9 @@ export default function Calculator() {
           <Grid>
             <Button>+</Button>
             <Button>-</Button>
+          </Grid>
+          <Grid>
+            <Button fullWidth>Negatif</Button>
           </Grid>
           <Grid>
             <Button fullWidth>=</Button>
