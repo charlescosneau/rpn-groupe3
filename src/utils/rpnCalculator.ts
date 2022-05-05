@@ -4,7 +4,7 @@ export const additionCalculation = (firstNumber: number, secondNumber: number) =
   return firstNumber + secondNumber;
 };
 
-export const substractionCalculation = (firstNumber: number, secondNumber: number) => {
+export const subtractionCalculation = (firstNumber: number, secondNumber: number) => {
   return firstNumber - secondNumber;
 };
 
@@ -25,7 +25,7 @@ export const operationCalculation = (
     case "+":
       return additionCalculation(firstNumber, secondNumber);
     case "-":
-      return substractionCalculation(firstNumber, secondNumber);
+      return subtractionCalculation(firstNumber, secondNumber);
     case "*":
       return multiplicationCalculation(firstNumber, secondNumber);
     case "/":
