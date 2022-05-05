@@ -1,40 +1,36 @@
-import { useState } from 'react';
+export type Operator = "+" | "*" | "-" | "/";
 
-const [operator1, setOperator1] = useState<(number | string)>();
-const [operator2, setOperator2] = useState<(number | string)>();
-
-function calculate(operation: (number | string)[]) {
-  operation.forEach((item: number | string, index: number) => {
-    if (typeof(item) === 'string') {
-      setOperator1(operation[index - 2]);
-      setOperator2(operation[index - 1]);
-      if (item === '+') {
-        addNumbers([Number(operator1), Number(operator2)]);
-      } else if (item === '-') {
-        subtractNumbers([Number(operator1), Number(operator2)]);
-      } else if (item === '*') {
-        multiplyNumbers([Number(operator1), Number(operator2)]);
-      } else if (item === '/') {
-        divideNumbers([Number(operator1), Number(operator2)]);
-      }
-    }
-  })
-}
-
-function multiplyNumbers(operators: [number, number]): number {
-  return operators[0] * operators[1];
+export const additionCalculation = (a: number, b: number) => {
+  return a + b;
 };
 
-function divideNumbers(operators: [number, number]): number {
-  return operators[0] / operators[1];
+export const substractionCalculation = (a: number, b: number) => {
+  return a - b;
 };
 
-function addNumbers(operators: [number, number]): number {
-  return operators[0] + operators[1];
+export const multiplicationCalculation = (a: number, b: number) => {
+  return a * b;
 };
 
-function subtractNumbers(operators: [number, number]): number {
-  return operators[0] - operators[1];
+export const divisionCalculation = (a: number, b: number) => {
+  return a / b;
 };
 
-export {};
+export const calculateOperation = (
+  operator: Operator,
+  a: number,
+  b: number
+) => {
+  switch (operator) {
+    case "+":
+      return additionCalculation(a, b);
+    case "-":
+      return substractionCalculation(a, b);
+    case "*":
+      return multiplicationCalculation(a, b);
+    case "/":
+      return divisionCalculation(a, b);
+    default:
+      break;
+  }
+};

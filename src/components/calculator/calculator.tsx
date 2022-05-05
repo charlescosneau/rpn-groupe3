@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button } from "@mui/material";
 import "./calculator.css";
+import { calculateOperation, Operator } from "../../utils/rpnCalculator";
 
 export default function Calculator() {
   const [negativeValue, setNegativeValue] = useState(false);
-  const [displayOperation, setDisplayOperation] = useState<(number | string)[]>([]);
+  const [displayOperation, setDisplayOperation] = useState<(number | string)[]>(
+    []
+  );
   const [result, setResult] = useState<number[]>([]);
   const [displayResult, setDisplayResult] = useState(false);
 
@@ -22,88 +25,25 @@ export default function Calculator() {
   const resetOperation = () => {
     setDisplayOperation([]);
     setResult([]);
-    setDisplayResult(false)
+    setDisplayResult(false);
   };
 
-  const additionOfNumbers = (symbole: string) => {
-    setDisplayOperation([...displayOperation, symbole]);
-
+  const calculate = (operator: Operator) => {
+    setDisplayOperation([...displayOperation, operator]);
     const lastElement = result.pop();
     const secondLastElement = result.pop();
-
     let newValue;
-
     if (lastElement && secondLastElement) {
-      newValue = secondLastElement + lastElement;
+      newValue = calculateOperation(operator, secondLastElement, lastElement)
     }
-
     if (result && newValue) {
-      console.log(result, newValue);
       setResult([...result, newValue]);
     }
   };
-
-  const substractionOfNumbers = (symbole: string) => {
-    setDisplayOperation([...displayOperation, symbole]);
-
-    const lastElement = result.pop();
-    const secondLastElement = result.pop();
-
-    let newValue;
-
-    if (lastElement && secondLastElement) {
-      newValue = secondLastElement - lastElement;
-    }
-
-    if (result && newValue) {
-      console.log(result, newValue);
-      setResult([...result, newValue]);
-    }
-  }
-
-  const multiplicationOfNumbers = (symbole: string) => {
-    setDisplayOperation([...displayOperation, symbole]);
-
-    const lastElement = result.pop();
-    const secondLastElement = result.pop();
-
-    let newValue;
-
-    if (lastElement && secondLastElement) {
-      newValue = secondLastElement * lastElement;
-    }
-
-    if (result && newValue) {
-      console.log(result, newValue);
-      setResult([...result, newValue]);
-    }
-  }
-
-  const divisionOfNumbers = (symbole: string) => {
-    setDisplayOperation([...displayOperation, symbole]);
-
-    const lastElement = result.pop();
-    const secondLastElement = result.pop();
-
-    let newValue;
-
-    if (lastElement && secondLastElement) {
-      newValue = secondLastElement / lastElement;
-    }
-
-    if (result && newValue) {
-      console.log(result, newValue);
-      setResult([...result, newValue]);
-    }
-  }
 
   const finalOperation = () => {
     setDisplayResult(!displayResult);
   };
-
-  useEffect(() => {
-    console.log(result);
-  }, [result]);
 
   // TODO : Bug quand result === 0 car plus de tableau
 
@@ -167,28 +107,28 @@ export default function Calculator() {
         </div>
         <div className="operators operators-org">
           <Button
-            onClick={() => divisionOfNumbers("/")}
+            onClick={() => calculate("/")}
             fullWidth
             variant="contained"
           >
             /
           </Button>
           <Button
-            onClick={() => multiplicationOfNumbers("*")}
+            onClick={() => calculate("*")}
             fullWidth
             variant="contained"
           >
             *
           </Button>
           <Button
-            onClick={() => additionOfNumbers("+")}
+            onClick={() => calculate("+")}
             fullWidth
             variant="contained"
           >
             +
           </Button>
           <Button
-            onClick={() => substractionOfNumbers("-")}
+            onClick={() => calculate("-")}
             fullWidth
             variant="contained"
           >
