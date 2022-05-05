@@ -4,9 +4,7 @@ import "./calculator.css";
 
 export default function Calculator() {
   const [negativeValue, setNegativeValue] = useState(false);
-  const [displayOperation, setDisplayOperation] = useState<(number | string)[]>(
-    []
-  );
+  const [displayOperation, setDisplayOperation] = useState<(number | string)[]>([]);
   const [result, setResult] = useState<number[]>([]);
   const [displayResult, setDisplayResult] = useState(false);
 
@@ -36,7 +34,7 @@ export default function Calculator() {
     let newValue;
 
     if (lastElement && secondLastElement) {
-      newValue = lastElement + secondLastElement;
+      newValue = secondLastElement + lastElement;
     }
 
     if (result && newValue) {
@@ -54,7 +52,7 @@ export default function Calculator() {
     let newValue;
 
     if (lastElement && secondLastElement) {
-      newValue = lastElement - secondLastElement;
+      newValue = secondLastElement - lastElement;
     }
 
     if (result && newValue) {
@@ -72,7 +70,7 @@ export default function Calculator() {
     let newValue;
 
     if (lastElement && secondLastElement) {
-      newValue = lastElement * secondLastElement;
+      newValue = secondLastElement * lastElement;
     }
 
     if (result && newValue) {
@@ -90,7 +88,7 @@ export default function Calculator() {
     let newValue;
 
     if (lastElement && secondLastElement) {
-      newValue = lastElement / secondLastElement;
+      newValue = secondLastElement / lastElement;
     }
 
     if (result && newValue) {
