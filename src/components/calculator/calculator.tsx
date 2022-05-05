@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
 import "./calculator.css";
-import { calculateOperation, Operator } from "../../utils/rpnCalculator";
+import { operationCalculation, Operator } from "../../utils/rpnCalculator";
 
 export default function Calculator() {
   const [negativeValue, setNegativeValue] = useState(false);
@@ -34,7 +34,7 @@ export default function Calculator() {
     const secondLastElement = result.pop();
     let newValue;
     if (lastElement && secondLastElement) {
-      newValue = calculateOperation(operator, secondLastElement, lastElement)
+      newValue = operationCalculation(operator, secondLastElement, lastElement)
     }
     if (result && newValue) {
       setResult([...result, newValue]);

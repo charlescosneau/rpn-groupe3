@@ -1,35 +1,35 @@
 export type Operator = "+" | "*" | "-" | "/";
 
-export const additionCalculation = (a: number, b: number) => {
-  return a + b;
+export const additionCalculation = (firstNumber: number, secondNumber: number) => {
+  return firstNumber + secondNumber;
 };
 
-export const substractionCalculation = (a: number, b: number) => {
-  return a - b;
+export const substractionCalculation = (firstNumber: number, secondNumber: number) => {
+  return firstNumber - secondNumber;
 };
 
-export const multiplicationCalculation = (a: number, b: number) => {
-  return a * b;
+export const multiplicationCalculation = (firstNumber: number, secondNumber: number) => {
+  return firstNumber * secondNumber;
 };
 
-export const divisionCalculation = (a: number, b: number) => {
-  return a / b;
+export const divisionCalculation = (firstNumber: number, secondNumber: number) => {
+  return firstNumber / secondNumber;
 };
 
-export const calculateOperation = (
+export const operationCalculation = (
   operator: Operator,
-  a: number,
-  b: number
+  firstNumber: number,
+  secondNumber: number
 ) => {
   switch (operator) {
     case "+":
-      return additionCalculation(a, b);
+      return additionCalculation(firstNumber, secondNumber);
     case "-":
-      return substractionCalculation(a, b);
+      return substractionCalculation(firstNumber, secondNumber);
     case "*":
-      return multiplicationCalculation(a, b);
+      return multiplicationCalculation(firstNumber, secondNumber);
     case "/":
-      return divisionCalculation(a, b);
+      return divisionCalculation(firstNumber, secondNumber);
     default:
       break;
   }
