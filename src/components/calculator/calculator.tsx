@@ -24,6 +24,7 @@ export default function Calculator() {
   const resetOperation = () => {
     setDisplayOperation([]);
     setResult([]);
+    setDisplayResult(false)
   };
 
   const additionOfNumbers = (symbole: string) => {
@@ -44,6 +45,60 @@ export default function Calculator() {
     }
   };
 
+  const substractionOfNumbers = (symbole: string) => {
+    setDisplayOperation([...displayOperation, symbole]);
+
+    const lastElement = result.pop();
+    const secondLastElement = result.pop();
+
+    let newValue;
+
+    if (lastElement && secondLastElement) {
+      newValue = lastElement - secondLastElement;
+    }
+
+    if (result && newValue) {
+      console.log(result, newValue);
+      setResult([...result, newValue]);
+    }
+  }
+
+  const multiplicationOfNumbers = (symbole: string) => {
+    setDisplayOperation([...displayOperation, symbole]);
+
+    const lastElement = result.pop();
+    const secondLastElement = result.pop();
+
+    let newValue;
+
+    if (lastElement && secondLastElement) {
+      newValue = lastElement * secondLastElement;
+    }
+
+    if (result && newValue) {
+      console.log(result, newValue);
+      setResult([...result, newValue]);
+    }
+  }
+
+  const divisionOfNumbers = (symbole: string) => {
+    setDisplayOperation([...displayOperation, symbole]);
+
+    const lastElement = result.pop();
+    const secondLastElement = result.pop();
+
+    let newValue;
+
+    if (lastElement && secondLastElement) {
+      newValue = lastElement / secondLastElement;
+    }
+
+    if (result && newValue) {
+      console.log(result, newValue);
+      setResult([...result, newValue]);
+    }
+  }
+
   const finalOperation = () => {
     setDisplayResult(!displayResult);
   };
@@ -51,6 +106,8 @@ export default function Calculator() {
   useEffect(() => {
     console.log(result);
   }, [result]);
+
+  // TODO : Bug quand result === 0 car plus de tableau
 
   return (
     <div>
@@ -112,14 +169,14 @@ export default function Calculator() {
         </div>
         <div className="operators operators-org">
           <Button
-            // onClick={() => addOperation("/")}
+            onClick={() => divisionOfNumbers("/")}
             fullWidth
             variant="contained"
           >
             /
           </Button>
           <Button
-            // onClick={() => addOperation("*")}
+            onClick={() => multiplicationOfNumbers("*")}
             fullWidth
             variant="contained"
           >
@@ -133,7 +190,7 @@ export default function Calculator() {
             +
           </Button>
           <Button
-            // onClick={() => addOperation("-")}
+            onClick={() => substractionOfNumbers("-")}
             fullWidth
             variant="contained"
           >
