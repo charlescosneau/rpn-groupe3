@@ -4,7 +4,7 @@ import {
   multiplicationCalculation,
   divisionCalculation,
   operationCalculation,
-} from "./rpnCalculator";
+} from "../../utils/rpnCalculator";
 
 describe("1) Test : Addition", () => {
   it("1) Addition of two numbers", () => {

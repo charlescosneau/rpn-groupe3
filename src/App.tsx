@@ -10,7 +10,7 @@ import Calculator from '../src/components/Calculator/calculator';
 import InputCalculator from './components/InputCalculator/InputCalculator';
 import "./App.css";
 
-import { Box, Button, Grid, Tab, Tabs, Typography } from "@mui/material"
+import { Box, Tab, Tabs, Typography } from "@mui/material"
 
 
 function App() {
