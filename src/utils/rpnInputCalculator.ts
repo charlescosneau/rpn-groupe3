@@ -38,7 +38,6 @@ export default function calculate(operation: (number | string)[]): number | stri
       return operation[0];
     }
   }
-  console.log(result);
   if (!result) {
     result = "Mauvaise operation"; 
   }
