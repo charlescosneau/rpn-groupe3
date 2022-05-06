@@ -13,6 +13,7 @@ export default function Calculator() {
   const [result, setResult] = useState<number[]>([]);
   const [displayResult, setDisplayResult] = useState(false);
   const [zeroResult, setZeroResult] = useState(false);
+  const [errorResult, setErrorResult] = useState(false);
 
   const addNumber = (number: number) => {
     if (negativeValue) {
@@ -30,6 +31,7 @@ export default function Calculator() {
     setResult([]);
     setDisplayResult(false);
     setZeroResult(false);
+    setErrorResult(false);
   };
 
   const calculate = (operator: Operator) => {
@@ -45,11 +47,27 @@ export default function Calculator() {
       setZeroResult(true);
     } else if (result && newValue) {
       setResult([...result, newValue]);
+    } else {
+      setErrorResult(true);
     }
   };
 
   const finalOperation = () => {
     setDisplayResult(!displayResult);
+  };
+
+  const renderResult = () => {
+    let renderResult;
+    if (displayResult && result.length === 1) {
+      renderResult = `Resultat : ${result}`;
+    } else if (displayResult && zeroResult) {
+      renderResult = "Resultat : 0";
+    } else if (displayResult && errorResult) {
+      renderResult = "Erreur d'opération";
+    } else {
+      renderResult = null;
+    }
+    return renderResult;
   };
 
   return (
@@ -145,11 +163,7 @@ export default function Calculator() {
           </Button>
         </div>
       </div>
-      {displayResult && result.length === 1 ? (
-        <div>Resultat : {result}</div>
-      ) : zeroResult ? (
-        <div>Resultat : 0</div>
-      ) : null}
+      <div>{renderResult()}</div>
     </div>
   );
 }
