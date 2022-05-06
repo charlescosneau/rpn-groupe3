@@ -4,6 +4,11 @@ import "./calculator.css";
 import { operationCalculation, Operator } from "../../utils/rpnCalculator";
 
 export default function Calculator() {
+
+  // TODO : Bug quand result === 0 car plus de tableau
+  // TODO : Cas d'erreur
+  // TODO : Faire le negate
+
   const [negativeValue, setNegativeValue] = useState(false);
   const [displayOperation, setDisplayOperation] = useState<(number | string)[]>(
     []
@@ -45,7 +50,6 @@ export default function Calculator() {
     setDisplayResult(!displayResult);
   };
 
-  // TODO : Bug quand result === 0 car plus de tableau
 
   return (
     <div>

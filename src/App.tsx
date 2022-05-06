@@ -45,16 +45,16 @@ function App() {
     );
   }
   
-  function a11yProps(index: number) {
+  function handlePropsTab(index: number) {
     return {
       id: `simple-tab-${index}`,
       'aria-controls': `simple-tabpanel-${index}`,
     };
   }
 
-  const [value, setValue] = React.useState(0);
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
+  const [valueTabPanel, setValueTabPanel] = React.useState(0);
+  const changeValueTabPanel = (event: React.SyntheticEvent, newValueTabPanel: number) => {
+    setValueTabPanel(newValueTabPanel);
   };
 
 
@@ -65,16 +65,16 @@ function App() {
 
         <Typography  variant="h2">RPN</Typography>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab label="Input" {...a11yProps(0)} />
-            <Tab label="Calculatrice" {...a11yProps(1)} />
+          <Tabs value={valueTabPanel} onChange={changeValueTabPanel} aria-label="basic tabs example">
+            <Tab label="Calculatrice" {...handlePropsTab(0)} />
+            <Tab label="Input" {...handlePropsTab(1)} />
           </Tabs>
         </Box>
-        <TabPanel value={value} index={0}>
-          <InputCalculator />
-        </TabPanel>
-        <TabPanel value={value} index={1}>
+        <TabPanel value={valueTabPanel} index={0}>
           <Calculator/>
+        </TabPanel>
+        <TabPanel value={valueTabPanel} index={1}>
+          <InputCalculator />
         </TabPanel>
       </ThemeProvider>
     </div>
