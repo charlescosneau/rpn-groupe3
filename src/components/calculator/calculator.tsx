@@ -4,8 +4,6 @@ import "./calculator.css";
 import { operationCalculation, Operator } from "../../utils/rpnCalculator";
 
 export default function Calculator() {
-  // TODO : Cas d'erreur
-
   const [negativeValue, setNegativeValue] = useState(false);
   const [displayOperation, setDisplayOperation] = useState<(number | string)[]>(
     []
