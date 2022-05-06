@@ -52,9 +52,6 @@ export default function Calculator() {
     }
   };
 
-  const finalOperation = () => {
-    setDisplayResult(!displayResult);
-  };
 
   const renderResult = () => {
     let renderResult;
@@ -154,7 +151,7 @@ export default function Calculator() {
         </div>
         <div className="equal">
           <Button
-            onClick={finalOperation}
+            onClick={() => setDisplayResult(!displayResult)}
             variant="contained"
             color="secondary"
             fullWidth
