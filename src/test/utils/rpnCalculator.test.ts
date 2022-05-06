@@ -43,4 +43,10 @@ describe("5) Test : Operation", () => {
   it("4) Operator : '/'", () => {
     expect(operationCalculation("/", 6, 2)).toEqual(3);
   });
+  it("5) Negative Result", () => {
+    expect(operationCalculation("+", 10, -20)).toEqual(-10);
+  });
+  it("6) Zero Result", () => {
+    expect(operationCalculation("+", 1, -1)).toEqual(0);
+  });
 });
