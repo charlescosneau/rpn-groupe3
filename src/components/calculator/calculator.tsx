@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button } from "@mui/material";
 import "./calculator.css";
 import { operationCalculation, Operator } from "../../utils/rpnCalculator";
 
 export default function Calculator() {
-
-  // TODO : Bug quand result === 0 car plus de tableau
   // TODO : Cas d'erreur
-  // TODO : Faire le negate
 
   const [negativeValue, setNegativeValue] = useState(false);
   const [displayOperation, setDisplayOperation] = useState<(number | string)[]>(
@@ -15,10 +12,11 @@ export default function Calculator() {
   );
   const [result, setResult] = useState<number[]>([]);
   const [displayResult, setDisplayResult] = useState(false);
+  const [zeroResult, setZeroResult] = useState(false);
 
   const addNumber = (number: number) => {
     if (negativeValue) {
-      setDisplayOperation([...displayOperation, -number]);
+      setDisplayOperation([...displayOperation, number + "N"]);
       setResult([...result, -number]);
       setNegativeValue(false);
     } else {
@@ -31,6 +29,7 @@ export default function Calculator() {
     setDisplayOperation([]);
     setResult([]);
     setDisplayResult(false);
+    setZeroResult(false);
   };
 
   const calculate = (operator: Operator) => {
@@ -38,10 +37,13 @@ export default function Calculator() {
     const lastElement = result.pop();
     const secondLastElement = result.pop();
     let newValue;
+
     if (lastElement && secondLastElement) {
-      newValue = operationCalculation(operator, secondLastElement, lastElement)
+      newValue = operationCalculation(operator, secondLastElement, lastElement);
     }
-    if (result && newValue) {
+    if (newValue === 0) {
+      setZeroResult(true);
+    } else if (result && newValue) {
       setResult([...result, newValue]);
     }
   };
@@ -49,7 +51,6 @@ export default function Calculator() {
   const finalOperation = () => {
     setDisplayResult(!displayResult);
   };
-
 
   return (
     <div>
@@ -110,32 +111,16 @@ export default function Calculator() {
           </div>
         </div>
         <div className="operators operators-org">
-          <Button
-            onClick={() => calculate("/")}
-            fullWidth
-            variant="contained"
-          >
+          <Button onClick={() => calculate("/")} fullWidth variant="contained">
             /
           </Button>
-          <Button
-            onClick={() => calculate("*")}
-            fullWidth
-            variant="contained"
-          >
+          <Button onClick={() => calculate("*")} fullWidth variant="contained">
             *
           </Button>
-          <Button
-            onClick={() => calculate("+")}
-            fullWidth
-            variant="contained"
-          >
+          <Button onClick={() => calculate("+")} fullWidth variant="contained">
             +
           </Button>
-          <Button
-            onClick={() => calculate("-")}
-            fullWidth
-            variant="contained"
-          >
+          <Button onClick={() => calculate("-")} fullWidth variant="contained">
             -
           </Button>
         </div>
@@ -162,6 +147,8 @@ export default function Calculator() {
       </div>
       {displayResult && result.length === 1 ? (
         <div>Resultat : {result}</div>
+      ) : zeroResult ? (
+        <div>Resultat : 0</div>
       ) : null}
     </div>
   );
