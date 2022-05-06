@@ -1,10 +1,5 @@
-import {
-  additionCalculation,
-  subtractionCalculation,
-  multiplicationCalculation,
-  divisionCalculation,
-  operationCalculation,
-} from "../../utils/rpnCalculator";
+import { additionCalculation , substractionCalculation, multiplicationCalculation, divisionCalculation } from "../../utils/calculate";
+import { operationCalculation } from "../../utils/rpnCalculator"
 
 describe("1) Test : Addition", () => {
   it("1) Addition of two numbers", () => {
@@ -14,7 +9,7 @@ describe("1) Test : Addition", () => {
 
 describe("2) Test : Subtraction", () => {
   it("1) Subtraction of two numbers", () => {
-    expect(subtractionCalculation(2, 1)).toEqual(1);
+    expect(substractionCalculation(2, 1)).toEqual(1);
   });
 });
 

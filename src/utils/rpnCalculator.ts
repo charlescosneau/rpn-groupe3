@@ -1,20 +1,6 @@
+import { additionCalculation , substractionCalculation, multiplicationCalculation , divisionCalculation } from './calculate'
+
 export type Operator = "+" | "*" | "-" | "/";
-
-export const additionCalculation = (firstNumber: number, secondNumber: number) => {
-  return firstNumber + secondNumber;
-};
-
-export const subtractionCalculation = (firstNumber: number, secondNumber: number) => {
-  return firstNumber - secondNumber;
-};
-
-export const multiplicationCalculation = (firstNumber: number, secondNumber: number) => {
-  return firstNumber * secondNumber;
-};
-
-export const divisionCalculation = (firstNumber: number, secondNumber: number) => {
-  return firstNumber / secondNumber;
-};
 
 export const operationCalculation = (
   operator: Operator,
@@ -25,7 +11,7 @@ export const operationCalculation = (
     case "+":
       return additionCalculation(firstNumber, secondNumber);
     case "-":
-      return subtractionCalculation(firstNumber, secondNumber);
+      return substractionCalculation(firstNumber, secondNumber);
     case "*":
       return multiplicationCalculation(firstNumber, secondNumber);
     case "/":

@@ -14,7 +14,7 @@ export const divisionCalculation = (firstNumber: number, secondNumber: number) =
   return (firstNumber) / (secondNumber);
 };
 
-export default function calculate(operation: (number | string)[]): number | string {
+export function calculate(operation: (number | string)[]): number | string {
   let result: number | string = 0;
   for (let i = 0; i < operation.length; i++) {
     if (operation.length > 1) {

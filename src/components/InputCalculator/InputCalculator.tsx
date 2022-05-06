@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button, Input } from "@mui/material";
-import calculate from "../../utils/rpnInputCalculator";
+import { calculate }from "../../utils/rpnInputCalculator";
 
 export default function InputCalculator() {
   const [result, setResult] = useState<number | string>(0);
