@@ -62,18 +62,17 @@ function App() {
     <div className="container">
       <ThemeProvider theme={theme}>
         <CssBaseline />
-
         <Typography  variant="h2">RPN</Typography>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={valueTabPanel} onChange={changeValueTabPanel} aria-label="basic tabs example">
-            <Tab label="Calculatrice" {...handlePropsTab(0)} />
             <Tab label="Input" {...handlePropsTab(1)} />
+            <Tab label="Calculatrice" {...handlePropsTab(0)} />
           </Tabs>
         </Box>
-        <TabPanel value={valueTabPanel} index={0}>
+        <TabPanel value={valueTabPanel} index={1}>
           <Calculator/>
         </TabPanel>
-        <TabPanel value={valueTabPanel} index={1}>
+        <TabPanel value={valueTabPanel} index={0}>
           <InputCalculator />
         </TabPanel>
       </ThemeProvider>
