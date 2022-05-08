@@ -51,7 +51,7 @@ describe("4) Test : Division", () => {
 
 describe("5) Test : Calculate", () => {
   it("1) Addition", () => {
-    expect(calculate(['1.5', '4', '5', '+', '+'])).toEqual(10.5);
+    expect(calculate(['1.5', '4', '5N', '+', '+'])).toEqual(0.5);
   });
   it("2) Soustraction", () => {
     expect(calculate(['1.5', '4', '5', '-', '-'])).toEqual(2.5);
@@ -66,7 +66,7 @@ describe("5) Test : Calculate", () => {
     expect(calculate(['1', '1', '+', '4', '*', '2', '/', '9N', '2', '+', '+'])).toEqual(-3);
   });
   it("6) Expression complexe - Fail expected", () => {
-    expect(calculate(['1', '1', '+', '4', '*', '2', '/', '9N', '2', '+'])).toEqual("Mauvaise operation");
+    expect(calculate(['1', '1', '+', '4', '*', '2', '/', '9N', '2', '+'])).toEqual("Mauvaise syntaxe");
   });
   it("7) Addition simple", () => {
     expect(calculate(['1', '1', '+'])).toEqual(2);
