@@ -1,7 +1,6 @@
 import { additionCalculation , substractionCalculation, multiplicationCalculation , divisionCalculation } from './calculate';
 
 export function calculate(operation: (number | string)[]): number | string {
-  console.log(operation);
   let result: number | string = 0;
   for (let i = 0; i < operation.length; i++) {
     if (operation.length > 1) {
@@ -23,6 +22,9 @@ export function calculate(operation: (number | string)[]): number | string {
       }
     }
   }
-  console.log(operation);
-  return operation[0];
+  if (operation.length > 1) {
+    return "Mauvaise expression";
+  } else {
+    return operation[0];
+  }
 }

@@ -1,5 +1,6 @@
 import { additionCalculation , substractionCalculation, multiplicationCalculation,divisionCalculation } from '../../utils/calculate';
 import { calculate } from '../../utils/rpnInputCalculator';
+import { transformInputToValues } from '../../utils/transformInputToValues';
 
 describe("1) Test : Addition", () => {
   it("1) Addition of two numbers", () => {
@@ -49,24 +50,36 @@ describe("4) Test : Division", () => {
   });
 });
 
-describe("5) Test : Calculate", () => {
+describe("5) Test : transforInputToValues", () => {
+  it("1) Should return right size of elements", () => {
+    expect(transformInputToValues('1.4 3 - +').length).toEqual(4);
+  });
+  it("2) Should return valid array", () => {
+    expect(transformInputToValues('1.4 3N - +')).toEqual(['1.4', -3, '-', '+']);
+  });
+  it("3) Should return negative value for negate", () => {
+    expect(transformInputToValues('3N')).toEqual([-3]);
+  });
+})
+
+describe("6) Test : Calculate", () => {
   it("1) Addition", () => {
-    expect(calculate(['1.5', '4', '5N', '+', '+'])).toEqual(0.5);
+    expect(calculate(transformInputToValues('1.5 4 5N + +'))).toEqual(0.5);
   });
   it("2) Soustraction", () => {
     expect(calculate(['1.5', '4', '5', '-', '-'])).toEqual(2.5);
   });
   it("3) Multiplication", () => {
-    expect(calculate(['1.5', '4N', '5', '*', '*'])).toEqual(-30);
+    expect(calculate(transformInputToValues('1.5 4N 5 * *'))).toEqual(-30);
   });
   it("4) Division", () => {
-    expect(calculate(['1.5', '4N', '5', '/', '/'])).toEqual(-1.875);
+    expect(calculate(transformInputToValues('1.5 4N 5 / /'))).toEqual(-1.875);
   });
   it("5) Expression complexe", () => {
-    expect(calculate(['1', '1', '+', '4', '*', '2', '/', '9N', '2', '+', '+'])).toEqual(-3);
+    expect(calculate(transformInputToValues('1 1 + 4 * 2 / 9N 2 + +'))).toEqual(-3);
   });
   it("6) Expression complexe - Fail expected", () => {
-    expect(calculate(['1', '1', '+', '4', '*', '2', '/', '9N', '2', '+'])).toEqual("Mauvaise syntaxe");
+    expect(calculate(transformInputToValues('1 1 + 4 * 2 / 9N 2 +'))).toEqual("Mauvaise expression");
   });
   it("7) Addition simple", () => {
     expect(calculate(['1', '1', '+'])).toEqual(2);

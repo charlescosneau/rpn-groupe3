@@ -1,24 +1,17 @@
 import { useState } from 'react';
 import { Button, Input } from "@mui/material";
 import { calculate }from "../../utils/rpnInputCalculator";
+import { transformInputToValues } from '../../utils/transformInputToValues';
 
 export default function InputCalculator() {
-  const [result, setResult] = useState<number | string>(0);
   const inputValue = (e: React.FormEvent<HTMLFormElement>) => {
-    const toCalculate: (number | string)[] = [];
     e.preventDefault();
     const input = document.getElementById("inputCalculator") as HTMLInputElement;
-    const values = input.value.split(" ");
-    values.forEach((value:string, index: number) => {
-      if (String(value).includes('N')) {
-        const negate: number = Number(value.replace('N', ''));
-        toCalculate.push(-negate);
-      } else {
-        toCalculate.push(value);
-      }
-      setResult(calculate(toCalculate));
-    })
+    const inputValue = input.value;
+    const toCalculate = transformInputToValues(inputValue);
+    setResult(calculate(toCalculate));
   };
+  const [result, setResult] = useState<number | string>(0);
 
   return (
     <div>
