@@ -67,7 +67,7 @@ describe("6) Test : Calculate", () => {
     expect(calculate(transformInputToValues('1.5 4 5N + +'))).toEqual(0.5);
   });
   it("2) Soustraction", () => {
-    expect(calculate(['1.5', '4', '5', '-', '-'])).toEqual(2.5);
+    expect(calculate(transformInputToValues('1.5 4 5 - -'))).toEqual(2.5);
   });
   it("3) Multiplication", () => {
     expect(calculate(transformInputToValues('1.5 4N 5 * *'))).toEqual(-30);
@@ -82,6 +82,6 @@ describe("6) Test : Calculate", () => {
     expect(calculate(transformInputToValues('1 1 + 4 * 2 / 9N 2 +'))).toEqual("Mauvaise expression");
   });
   it("7) Addition simple", () => {
-    expect(calculate(['1', '1', '+'])).toEqual(2);
+    expect(calculate(transformInputToValues('1 1 +'))).toEqual(2);
   })
 });
